@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Prompter - Elevate Your Workflow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Comic Sans MS', 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, #3700b3, #bb86fc);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 45px;
+            margin-right: 12px;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover {
+            transform: rotate(10deg);
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff8c00, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            color: #bb86fc;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, #3700b3, #bb86fc);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-logo {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 70px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .floating-logos {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .floating-logo {
+            position: absolute;
+            height: 35px;
+            opacity: 0.25;
+            animation: floatRandom 10s infinite ease-in-out;
+            filter: drop-shadow(0 0 5px rgba(187, 134, 252, 0.5));
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(-50%, 0);
+            }
+
+            50% {
+                transform: translate(-50%, -15px);
+            }
+        }
+
+        @keyframes floatRandom {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(25px, -25px) scale(1.05);
+            }
+
+            50% {
+                transform: translate(-25px, 25px) scale(0.95);
+            }
+
+            75% {
+                transform: translate(20px, -20px) scale(1.05);
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            color: #ffffff;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: slideInLeft 1s ease-out;
+            z-index: 10;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+            max-width: 750px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            animation: fadeIn 1.5s ease-in;
+            z-index: 10;
+            position: relative;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 35px;
+            margin: 0 auto;
+            /* Reduced padding for better PC scaling */
+            background: linear-gradient(135deg, #3700b3, #bb86fc);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
+            z-index: 10;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(55, 0, 179, 0.4);
+            max-width: 300px;
+            /* Added max-width to control size on PC */
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(55, 0, 179, 0.6);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #3700b3, #bb86fc);
+            padding: 35px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out forwards;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .feature-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .feature-card h3 {
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .feature-card p {
+            color: #e0e0e0;
+            font-size: 16px;
+            font-weight: 300;
+            z-index: 2;
+            position: relative;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1a1a1a, #252525);
+            text-align: center;
+        }
+
+        .how-it-works h2 {
+            font-size: 40px;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 50px;
+            animation: fadeIn 1s ease-in;
+            text-transform: uppercase;
+        }
+
+        .steps {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .step {
+            background: linear-gradient(135deg, #3700b3, #bb86fc);
+            padding: 30px;
+            border-radius: 12px;
+            animation: bounceIn 1s ease-out;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .step:hover {
+            transform: scale(1.05);
+        }
+
+        .step h3 {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .step p {
+            color: #e0e0e0;
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.03);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #0d0d0d;
+        }
+
+        .testimonials h2 {
+            font-size: 40px;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .testimonial {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #3700b3, #bb86fc);
+            border-radius: 12px;
+            animation: fadeIn 1s ease-in;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #e0e0e0;
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        .testimonial span {
+            display: block;
+            margin-top: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #3700b3, #bb86fc);
+            padding: 60px 20px;
+            text-align: center;
+            color: #e0e0e0;
+            font-size: 15px;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer .footer-logo {
+            height: 50px;
+            margin-bottom: 25px;
+            transition: transform 0.5s;
+        }
+
+        footer .footer-logo:hover {
+            transform: rotate(360deg);
+        }
+
+        footer a {
+            color: #bb86fc;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        footer .creator {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #bb86fc;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero .subtitle {
+                font-size: 20px;
+            }
+
+            .features,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                padding: 10px 20px;
+            }
+
+            nav {
+                margin-top: 15px;
+            }
+
+            nav a {
+                margin: 0 10px;
+            }
+
+            .floating-logo {
+                height: 25px;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                max-width: 250px;
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .cta-button {
+                padding: 14px 35px;
+                font-size: 18px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="./pp-logo.png" alt="Power Prompter Logo">
+            <span class="logo-text">Power Prompter</span>
+        </div>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="https://chrome.google.com/webstore" target="_blank" rel="noopener">Get It Now</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img src="./pp-logo.png" alt="Power Prompter Logo" class="hero-logo">
+        <div class="floating-logos">
+            <img src="./pp-logo.png" alt="Floating Logo" class="floating-logo"
+                style="top: 10%; left: 10%; animation-duration: 6s;">
+            <img src="./pp-logo.png" alt="Floating Logo" class="floating-logo"
+                style="top: 20%; left: 80%; animation-duration: 7s; animation-delay: 1s;">
+            <img src="./pp-logo.png" alt="Floating Logo" class="floating-logo"
+                style="top: 60%; left: 20%; animation-duration: 5s; animation-delay: 0.5s;">
+            <img src="./pp-logo.png" alt="Floating Logo" class="floating-logo"
+                style="top: 70%; left: 70%; animation-duration: 8s;">
+            <img src="./pp-logo.png" alt="Floating Logo" class="floating-logo"
+                style="top: 40%; left: 50%; animation-duration: 6s; animation-delay: 2s;">
+            <img src="./pp-logo.png" alt="Floating Logo" class="floating-logo"
+                style="top: 30%; left: 30%; animation-duration: 6.5s; animation-delay: 1.5s;">
+            <img src="./pp-logo.png" alt="Floating Logo" class="floating-logo"
+                style="top: 50%; left: 60%; animation-duration: 7.5s; animation-delay: 0.8s;">
+        </div>
+        <h1>Power Prompter</h1>
+        <p class="subtitle">Elevate your productivity with AI-driven prompts, seamlessly integrated into your browser.
+        </p>
+        <a href="https://chrome.google.com/webstore" target="_blank" class="cta-button" rel="noopener">Add to Chrome -
+            Free</a>
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature-card">
+            <h3>Instant Prompts</h3>
+            <p>Unlock a curated library of prompts or craft your own in seconds.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Elegant Interface</h3>
+            <p>A refined, dark-themed design that’s both visually stunning and intuitive.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Smart Automation</h3>
+            <p>Effortlessly automate tasks like coding, writing, and summarizing.</p>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>1. Install</h3>
+                <p>Add Power Prompter to Chrome with a single click.</p>
+            </div>
+            <div class="step">
+                <h3>2. Customize</h3>
+                <p>Select or create prompts tailored to your needs.</p>
+            </div>
+            <div class="step">
+                <h3>3. Accelerate</h3>
+                <p>Boost your workflow with instant AI-powered assistance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2>User Voices</h2>
+        <div class="testimonial">
+            <p>"Power Prompter transformed my daily tasks—emails are a breeze now!"</p>
+            <span>- Aniket Sharma</span>
+        </div>
+        <div class="testimonial">
+            <p>"A coder’s dream tool. The interface is pure elegance."</p>
+            <span>- ABC</span>
+        </div>
+    </section>
+
+    <footer>
+        <img src="./pp-logo.png" alt="Power Prompter Logo" class="footer-logo">
+        <p>© 2025 Power Prompter. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a></p>
+        <p class="creator">Crafted with ❤️ by <a href="https://github.com/itsaniket61" target="_blank"
+                rel="noopener">Aniket</a></p>
+    </footer>
+
+    <script>
+        const floatingLogos = document.querySelectorAll('.floating-logo');
+        floatingLogos.forEach(logo => {
+            const randomX = Math.random() * 80;
+            const randomY = Math.random() * 60;
+            const randomDuration = 5 + Math.random() * 5;
+            const randomDelay = Math.random() * 2;
+
+            logo.style.left = `${randomX}%`;
+            logo.style.top = `${randomY}%`;
+            logo.style.animationDuration = `${randomDuration}s`;
+            logo.style.animationDelay = `${randomDelay}s`;
+        });
+    </script>
+</body>
+
+</html>

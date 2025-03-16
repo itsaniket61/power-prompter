@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "Power Prompter for ChatGPT",
+    "version": "1.0",
+    "description": "Quickly enhance your ChatGPT prompts with prebuilt templates.",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://chat.openai.com/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icon-16.png",
+            "48": "icon-48.png",
+            "128": "icon-128.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://chat.openai.com/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}
