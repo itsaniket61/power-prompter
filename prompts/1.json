@@ -1,0 +1,160 @@
+{
+    "Communication": [
+        {
+            "label": "Teams Chat",
+            "prompt": "Write teams message from give breif message: ${Breif Message:input}. Use ${tone:[formal, informal, professional]}"
+        },
+        {
+            "label": "Write Formal Email",
+            "prompt": "Write a formal email to ${recipient:input} regarding ${subject:input}. Include ${body:textarea}, maintain a ${tone:[formal, professional, neutral]} tone, and add a ${call_to_action:bool} if necessary."
+        },
+        {
+            "label": "Draft Team Announcement",
+            "prompt": "Compose an announcement for ${team:input} about ${event:input}. Provide ${details:textarea} and set the tone to ${tone:[urgent, casual, informative]}."
+        },
+        {
+            "label": "Request Feedback",
+            "prompt": "Request feedback from ${person:input} on ${topic:input}. Use a ${tone:[polite, direct, friendly]} tone and include ${specific_questions:textarea}."
+        },
+        {
+            "label": "Schedule Meeting",
+            "prompt": "Draft a message to ${recipient:input} to schedule a meeting about ${purpose:input} on ${date:input}. Suggest ${time:input} and ask for ${confirmation:bool}."
+        },
+        {
+            "label": "Thank You Note",
+            "prompt": "Write a thank you note to ${person:input} for ${reason:input}. Keep it ${tone:[formal, friendly, brief]} and include a ${personal_touch:bool}."
+        }
+    ],
+    "Writing Assistance": [
+        {
+            "label": "Proofread Text",
+            "prompt": "Proofread this text: ${content:textarea}. Correct grammar, spelling, and improve ${aspects:{clarity, flow, conciseness}}."
+        },
+        {
+            "label": "Simplify Explanation",
+            "prompt": "Simplify this explanation: ${text:textarea} for a ${audience:[beginner, intermediate, expert]} audience. Avoid ${jargon:bool}."
+        },
+        {
+            "label": "Generate Blog Intro",
+            "prompt": "Write an engaging intro for a blog post about ${topic:input}. Target ${audience:[general, tech, students]} and set the tone to ${tone:[exciting, informative, humorous]}."
+        },
+        {
+            "label": "Rewrite Sentence",
+            "prompt": "Rewrite this sentence: ${sentence:input} to be ${tone:[formal, casual, concise]} and adjust for ${audience:[professional, casual, youth]}."
+        },
+        {
+            "label": "Create Social Media Post",
+            "prompt": "Craft a social media post for ${platform:[Twitter, LinkedIn, Instagram]} about ${topic:input}. Include ${hashtags:input} and keep it ${tone:[engaging, professional, fun]}."
+        }
+    ],
+    "Code & Development": [
+        {
+            "label": "Explain Code Snippet",
+            "prompt": "Explain this code: ${code:textarea} to a ${audience:[junior dev, non-technical, senior dev]}. Highlight ${focus:{logic, syntax, purpose}}."
+        },
+        {
+            "label": "Generate Commit Message",
+            "prompt": "Write a commit message for changes to ${feature:input}. Follow ${style:[conventional commits, simple, detailed]} and mention ${impact:input}."
+        },
+        {
+            "label": "Debug Description",
+            "prompt": "Describe this bug: ${issue:textarea} for ${recipient:input}. Suggest ${fixes:input} and set urgency to ${level:[low, medium, high]}."
+        },
+        {
+            "label": "Code Review Comment",
+            "prompt": "Write a code review comment for ${code:textarea}. Make it ${tone:[constructive, direct, encouraging]} and suggest ${improvements:input}."
+        },
+        {
+            "label": "API Request Example",
+            "prompt": "Create an example API request for ${endpoint:input} with ${method:[GET, POST, PUT, DELETE]}. Include ${parameters:input} and ${body:bool}."
+        }
+    ],
+    "Productivity": [
+        {
+            "label": "Task Assignment",
+            "prompt": "Assign a task to ${assignee:input} about ${task:input}. Set deadline to ${date:input}, provide ${details:textarea}, and request ${confirmation:bool}."
+        },
+        {
+            "label": "Meeting Agenda",
+            "prompt": "Create a meeting agenda for ${topic:input} with ${team:input}. List ${items:textarea} and assign ${duration:input} per item."
+        },
+        {
+            "label": "Daily Standup Update",
+            "prompt": "Write a standup update for ${team:input}. Include ${yesterday:textarea}, ${today:textarea}, and ${blockers:input}."
+        },
+        {
+            "label": "Project Summary",
+            "prompt": "Summarize the ${project:input} project for ${audience:[team, stakeholders, manager]}. Cover ${details:textarea} and highlight ${status:[in progress, completed, delayed]}."
+        },
+        {
+            "label": "To-Do List Reminder",
+            "prompt": "Draft a reminder for ${person:input} about ${tasks:input}. Set tone to ${tone:[urgent, friendly, neutral]} and include ${due_date:input}."
+        }
+    ],
+    "Creative": [
+        {
+            "label": "Story Starter",
+            "prompt": "Write a story starter about ${character:input} in ${setting:input}. Use ${genre:[fantasy, mystery, sci-fi]} and add ${twist:input}."
+        },
+        {
+            "label": "Tagline Generator",
+            "prompt": "Create a tagline for ${product:input} targeting ${audience:[youth, professionals, families]}. Make it ${tone:[catchy, serious, playful]}."
+        },
+        {
+            "label": "Poem Prompt",
+            "prompt": "Write a short poem about ${theme:input} with ${style:[haiku, free verse, rhymed]}. Include ${emotions:{joy, sadness, hope}}."
+        },
+        {
+            "label": "Brainstorm Ideas",
+            "prompt": "Brainstorm ${quantity:input} ideas for ${project:input}. Focus on ${aspects:{innovation, feasibility, fun}} and keep it ${tone:[serious, creative, light]}."
+        },
+        {
+            "label": "Character Bio",
+            "prompt": "Create a bio for ${name:input}, a ${role:[hero, villain, sidekick]} in ${setting:input}. Describe ${traits:textarea} and ${motivation:input}."
+        }
+    ],
+    "Education": [
+        {
+            "label": "Lesson Plan Outline",
+            "prompt": "Outline a lesson plan for ${subject:input} aimed at ${level:[beginner, intermediate, advanced]}. Include ${objectives:textarea} and ${activities:input}."
+        },
+        {
+            "label": "Quiz Question",
+            "prompt": "Write a quiz question about ${topic:input} for ${audience:[students, professionals, general]}. Make it ${type:[multiple choice,         short answer, true/false]} with ${difficulty:[easy, medium, hard]}."
+        },
+        {
+            "label": "Study Guide Summary",
+            "prompt": "Summarize ${topic:input} for a study guide. Cover ${key_points:textarea} and simplify for ${audience:[high school, college, adult learners]}."
+        },
+        {
+            "label": "Explain Concept",
+            "prompt": "Explain ${concept:input} to ${audience:[kids, teens, adults]} using ${examples:input}. Keep it ${tone:[simple, engaging, detailed]}."
+        },
+        {
+            "label": "Homework Prompt",
+            "prompt": "Create a homework assignment for ${subject:input}. Assign ${task:textarea}, set due date to ${date:input}, and require ${submission:bool}."
+        }
+    ],
+    "Support": [
+        {
+            "label": "Customer Response",
+            "prompt": "Respond to a customer complaint about ${issue:input} from ${name:input}. Apologize, offer ${solution:input}, and use a ${tone:[empathetic, professional, friendly]} tone."
+        },
+        {
+            "label": "FAQ Entry",
+            "prompt": "Write an FAQ entry for ${question:input}. Provide ${answer:textarea} and target ${audience:[users, staff, clients]}."
+        },
+        {
+            "label": "Troubleshooting Guide",
+            "prompt": "Create a troubleshooting guide for ${problem:input}. List ${steps:textarea} and suggest ${contact:bool} if unresolved."
+        },
+        {
+            "label": "Escalation Email",
+            "prompt": "Draft an email to escalate ${issue:input} to ${recipient:input}. Describe ${details:textarea}, set urgency to ${level:[low, medium, high]}, and request ${follow_up:bool}."
+        },
+        {
+            "label": "Support Ticket Summary",
+            "prompt": "Summarize a support ticket for ${customer:input} about ${issue:input}. Include ${resolution:input} and status ${status:[open, resolved, pending]}."
+        }
+    ]
+}
