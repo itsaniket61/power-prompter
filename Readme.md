@@ -54,6 +54,6 @@ Thank you for contributing to the Power Prompter community!
 
 ## Contact
 
-For any questions or support, please reach out to our [support team](mailto:support@powerprompter.com).
+For any questions or support, please reach out to our [support team](mailto:aniket.sharma.4509@gmail.com).
 
 © 2025 Power Prompter. All rights reserved.
