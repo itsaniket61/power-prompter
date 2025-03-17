@@ -257,6 +257,9 @@ function insertPrompt(finalPrompt) {
 document.addEventListener('DOMContentLoaded', () => {
   const select = document.getElementById('prompt-select');
   const categoriesSelect = document.getElementById('prompts-categories');
+  const loader = document.getElementById('loader');
+  const content = document.getElementById('content');
+  const refreshButton = document.getElementById('refresh-btn');
   console.log('Document loaded, initializing prompt selection');
 
   const updateCategoriesAndPrompts = (prompts) => {
@@ -340,12 +343,25 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Static prompts added:', staticPrompts);
   updateCategoriesAndPrompts(staticPrompts);
 
-  let index = 1;
-  function fetchPrompt() {
-    const host = 'https://itsaniket61.github.io/power-prompter/prompts';
-    console.log('Fetching prompts from:', `${host}/${index}.json`);
+  function fetchPrompt(forceRefresh = false) {
+    const cacheKey = 'cachedPrompts';
+    const cacheTTL = 24 * 60 * 60 * 1000;
+    const cachedData = JSON.parse(localStorage.getItem(cacheKey) || '{}');
+    const now = Date.now();
 
-    fetch(`${host}/${index}.json`)
+    if (!forceRefresh && cachedData.timestamp && (now - cachedData.timestamp) < cacheTTL) {
+      console.log('Using cached prompts');
+      updateCategoriesAndPrompts(cachedData.prompts);
+      return;
+    }
+
+    const host =
+      'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjgJMoj-wD8UWhmsdGf5Ye7pI4aB2wb-FmI0oENPdw7aot7RsaR89NUfZd3hrKkU93DLC7NhLRTw4zG3FF-IXO_i0gJj3e8JLivhKwSnHx6ynqd6i0tigyIiG5FZFGEcVjG6kTvS91yLNv_ppuZL96thacvR4J1WjvdF1jJYxJkKDXvbVoq89Vn1y2Ficgn-4jqMK1uJWfcrGe1e9ki5BAHR5a38KdPSlgYX48wYEjd2tyNaeVbMXuLZ3m09E83ciZOiMc6-aUSpVNwbRp4RgaTHRSi9g&lib=MASdjw0VwOQblTfhyqtdTkzNVF3oo3Gqc';
+
+    loader.style.display = 'block';
+    content.style.display = 'none';
+
+    fetch(`${host}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('No more prompts found');
@@ -360,16 +376,22 @@ document.addEventListener('DOMContentLoaded', () => {
             staticPrompts[category] = data[category];
           }
         });
-        index++;
+        localStorage.setItem(cacheKey, JSON.stringify({ prompts: staticPrompts, timestamp: now }));
         updateCategoriesAndPrompts(staticPrompts);
-        fetchPrompt();
       })
       .catch((error) => {
-        if (index === 1) {
-          console.error('Error fetching prompts:', error);
-        }
+        console.error('Error fetching prompts:', error);
+      })
+      .finally(() => {
+        loader.style.display = 'none';
+        content.style.display = 'block';
       });
   }
+
+  refreshButton.addEventListener('click', () => {
+    console.log('Manual refresh triggered');
+    fetchPrompt(true);
+  });
 
   fetchPrompt();
 });
