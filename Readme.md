@@ -1,4 +1,4 @@
-![Power Prompter Banner](./banner.png)
+![Power Prompter Banner](./images/banner.png)
 
 # Power Prompter
 
@@ -45,6 +45,9 @@ Thank you for contributing to the Power Prompter community!
 1. **Download**: Click the "Download Extension" button to get the Power Prompter zip file.
 2. **Enable Developer Mode**: Open Chrome, go to Extensions, and enable Developer Mode.
 3. **Upload Extension**: Click "Load unpacked" and select the extracted Power Prompter folder.
+
+![Screenshot 1](./images/Screenshot-1.png)
+![Screenshot 2](./images/Screenshot-2.png)
 
 ## User Voices
 
